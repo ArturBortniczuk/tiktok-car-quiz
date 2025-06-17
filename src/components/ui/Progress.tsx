@@ -55,10 +55,10 @@ export const Progress: React.FC<ProgressProps> = ({
 };
 
 interface StepProgressProps {
-  steps: Array<{
-    id: string;
-    title: string;
-    description?: string;
+  steps: ReadonlyArray<{
+    readonly id: string;
+    readonly title: string;
+    readonly description?: string;
   }>;
   currentStep: string;
   completedSteps?: string[];
