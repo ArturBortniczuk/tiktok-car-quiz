@@ -30,7 +30,7 @@ export function createImagePreview(file: File): Promise<string> {
 }
 
 export function resizeImage(file: File, maxWidth: number, maxHeight: number, quality: number = 0.8): Promise<Blob> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d')!;
     const img = new Image();
@@ -57,9 +57,16 @@ export function resizeImage(file: File, maxWidth: number, maxHeight: number, qua
       // Rysuj przeskalowany obraz
       ctx.drawImage(img, 0, 0, width, height);
       
-      canvas.toBlob(resolve, 'image/jpeg', quality);
+      canvas.toBlob((blob) => {
+        if (blob) {
+          resolve(blob);
+        } else {
+          reject(new Error('Failed to create blob from canvas'));
+        }
+      }, 'image/jpeg', quality);
     };
     
+    img.onerror = reject;
     img.src = URL.createObjectURL(file);
   });
 }
