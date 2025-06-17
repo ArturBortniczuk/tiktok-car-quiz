@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   description: "Generator quizów samochodowych dla TikToka z AI",
   keywords: ["TikTok", "quiz", "samochody", "AI", "wideo"],
   authors: [{ name: "CarQuiz Team" }],
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     title: "TikTok Car Quiz Generator",
     description: "Stwórz angażujący quiz samochodowy dla TikToka w kilka minut",
@@ -31,6 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <head>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gray-50`}
       >
