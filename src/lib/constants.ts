@@ -93,7 +93,7 @@ export const APP_STEPS = [
     title: 'Podgląd',
     description: 'Sprawdź i pobierz film'
   }
-] as const;
+];
 
 // Komunikaty błędów
 export const ERROR_MESSAGES = {
